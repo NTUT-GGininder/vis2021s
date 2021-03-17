@@ -43,8 +43,29 @@
   <text x="438" y="12" font-size="12" text-anchor="start" fill="red">448</text>
   <text x="492" y="12" font-size="12" text-anchor="start" fill="red">512</text>
 
+   <!-- head -->
+  <rect x="6" y="124" width="381" height="259" stroke="red" stroke-width="10" fill="rgba(255,255,255,0)" opacity="0.5"/>
+  <path d="M190  10 C164 60,162 64,200 62 S240 60, 195 124" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M11 233 L113 233 M279 233 L382 233" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M170 327 A10 11,0,0,0 215 327" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  
+  <!-- body -->
+  <path d="M145 384 A110 110,0,0,0 130 440" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M240 384 A110 110,0,0,1 259 440" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M132 442 A2 3,160,0,0,153 496 A2 3,160,0,0,132 442" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M257 442 A2 3,25,0,0,236 496 A2 3,25,0,0,257 442" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M165 487 L225 487" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M145 384 A34 10,130,0,0,120 470" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M240 384 A34 10,50,0,1,265 470" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M275 420 
+    C330 400, 330 400, 370 420 S413 430, 445 390 
+    M440 355 A10 17,20,0,0, 470 369Z
+    M457 342 A10,35,30,0,0,473 350" 
+    stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M435 310 Q420 330, 433 326 T437 342" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+  <path d="M511 333 Q477 340,496 344 T484 352" stroke-width="10" stroke="#F00" fill="none" opacity="0.5"/>
+
   <path d="M256 256 V270 V242 M256 256 H270 H242" stroke="black" fill="white"></path>
   <text x="254" y="250" font-size="16" text-anchor="middle" fill="red">(256, 256)</text>
 </svg>
-
     

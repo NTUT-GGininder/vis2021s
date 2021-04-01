@@ -94,7 +94,7 @@ https://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html
                         .append("td")
                         .text(function(d, i, j) { return !/^\d+$/.test(d) || i < 4 ? d : ""; })
                         .append("img")
-                        .attr("src", function(d, i) { if (d % 2 == 0) return "./92.png"; else return "./93.png"; })
+                        .attr("src", function(d, i) { if (d % 2 == 1) return "./92.png"; else return "./93.png"; })
                         .attr("width",  function(d, i, j) {console.log(j); return !/^\d+$/.test(d) || i < 4 ? 0 : 60; })
                         .attr("height", function(d, i) { return !/^\d+$/.test(d) || i < 4 ? 0 : 60; });
             });

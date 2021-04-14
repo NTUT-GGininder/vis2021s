@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)file:///C:/Users/Username/Documents/%E8%B3%87%E6%96%99%E5%8F%AF%E8%A6%96%E5%8C%96/vis2021s/lab02/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    
+	    <title>lab02</title>
+		<script src="./lab02_files/d3.v4.js.下載"></script>
+		
+		<style>
+      		@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&display=swap');
+
+		    div, ul {
+		      border: solid black 1px;
+		      margin: 5px;
+		      padding: 10px;
+		      background-color: rgba(255, 255, 128, 0.1);
+		    }
+
+		    div:hover, ul:hover {
+		      background-color: rgba(255, 128, 128, 0.1);
+		    }
+
+			html, body {
+				height: 100%;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				padding: 10px;
+		        background-color: rgba(255, 255, 0, 0.02);
+		        font-family: 'Noto Serif JP', serif;
+			}
+
+			svg {
+		        font-family: 'Noto Serif JP', serif;
+			}
+
+			#dropfile {
+				height: 5%;
+				width: 100%;
+				border-style: dotted;;
+				display: block;
+				text-align: center;
+			    animation-name: oxxo;
+			    animation-duration: 2s;
+			    animation-iteration-count: infinite;
+			    padding: 10px;
+		        background-color: rgba(255, 255, 0, 0.1);
+		        font-family: 'Noto Serif JP', serif;
+		        margin-bottom: 10px;
+			}
+			#dropfile:hover {
+			    background-color: rgba(128, 255, 255, 0.1);
+			}
+			@keyframes oxxo{
+			    from {
+			        border-style: dotted;;
+			        border-color: blue;
+			        color: blue;
+			    }
+			    to {
+			        border-style: solid;
+			        border-color: red;
+			        color: crimson;
+			    }
+			}
+			
+			#treemap {
+				height: 95%;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div>lab02 treemap</div>
+		<ul>
+			<li>遠距教學授課防疫演練: 2021.03.18 (四) </li>
+			<li>上台報告: 2021.04.01 (四) </li>
+			<li><a href="https://www.d3-graph-gallery.com/graph/treemap_custom.html">Treemap customization in d3.js</a></li>
+			<li><a href="http://blog.infographics.tw/2015/10/d3js-tutorial-treemap-and-budget/">D3.js 實戰 － 利用 Treemap Layout 將政府預算視覺化</a></li>
+		</ul>
+
+		<div id="dropfile" for="csvfile">
+			CSV 資料扔過來! Drop your CSV here.
+		</div>
+		
+		<div id="treemap"><div><svg width="1923" height="894"><g><rect x="0" y="90" width="251.85112781954888" height="161.23711340206182" style="stroke: red; fill: rgb(64, 45, 84); opacity: 1;"></rect><rect x="0" y="306.2371134020618" width="251.85112781954888" height="156.91237113402065" style="stroke: red; fill: rgb(209, 137, 117); opacity: 0.964;"></rect><rect x="0" y="518.1494845360825" width="251.85112781954888" height="152.58762886597935" style="stroke: red; fill: rgb(143, 209, 117); opacity: 0.928;"></rect><rect x="0" y="725.7371134020618" width="251.85112781954888" height="148.26288659793818" style="stroke: red; fill: rgb(255, 102, 255); opacity: 0.892;"></rect><rect x="276.8511278195489" y="90" width="176.37658431793767" height="240.16657936092196" style="stroke: red; fill: rgb(255, 179, 102); opacity: 0.856;"></rect><rect x="463.22771213748655" y="90" width="143.96326530612242" height="240.16657936092196" style="stroke: red; fill: rgb(255, 179, 102); opacity: 0.568;"></rect><rect x="276.8511278195489" y="340.16657936092196" width="330.3398496240601" height="82.32338047843547" style="stroke: red; fill: rgb(255, 179, 102); opacity: 0.316;"></rect><rect x="276.8511278195489" y="477.4899598393574" width="330.3398496240601" height="119.12650602409644" style="stroke: red; fill: rgb(128, 255, 128); opacity: 0.82;"></rect><rect x="276.8511278195489" y="606.6164658634539" width="330.3398496240601" height="119.12650602409644" style="stroke: red; fill: rgb(128, 255, 128); opacity: 0.82;"></rect><rect x="276.8511278195489" y="780.7429718875502" width="330.3398496240601" height="93.2570281124498" style="stroke: red; fill: rgb(210, 121, 166); opacity: 0.784;"></rect><rect x="632.190977443609" y="90" width="303.22556390977445" height="124.09181585677749" style="stroke: red; fill: rgb(255, 102, 51); opacity: 0.748;"></rect><rect x="632.190977443609" y="224.0918158567775" width="303.22556390977445" height="120.97340153452689" style="stroke: red; fill: rgb(255, 102, 51); opacity: 0.712;"></rect><rect x="632.190977443609" y="400.0652173913044" width="184.5795169742538" height="185.75652173913045" style="stroke: red; fill: rgb(102, 0, 255); opacity: 0.676;"></rect><rect x="826.7704944178628" y="400.0652173913044" width="108.64604693552064" height="185.75652173913045" style="stroke: red; fill: rgb(102, 0, 255); opacity: 0.1;"></rect><rect x="632.190977443609" y="640.8217391304348" width="303.22556390977445" height="90.91304347826087" style="stroke: red; fill: rgb(0, 191, 255); opacity: 0.64;"></rect><rect x="632.190977443609" y="786.7347826086957" width="303.22556390977445" height="87.2652173913043" style="stroke: red; fill: rgb(83, 198, 83); opacity: 0.604;"></rect><rect x="960.4165413533834" y="90" width="270.4030075187969" height="94.96618357487924" style="stroke: red; fill: rgb(255, 128, 0); opacity: 0.532;"></rect><rect x="960.4165413533834" y="239.96618357487924" width="270.4030075187969" height="113.09614206981016" style="stroke: red; fill: rgb(64, 45, 84); opacity: 0.496;"></rect><rect x="960.4165413533834" y="363.0623256446894" width="270.4030075187969" height="109.67680479009323" style="stroke: red; fill: rgb(64, 45, 84); opacity: 0.46;"></rect><rect x="960.4165413533834" y="527.7391304347826" width="270.4030075187969" height="82.8067632850242" style="stroke: red; fill: rgb(209, 137, 117); opacity: 0.424;"></rect><rect x="960.4165413533834" y="665.5458937198068" width="270.4030075187969" height="78.75362318840575" style="stroke: red; fill: rgb(143, 209, 117); opacity: 0.388;"></rect><rect x="960.4165413533834" y="799.2995169082126" width="270.4030075187969" height="74.70048309178742" style="stroke: red; fill: rgb(255, 102, 255); opacity: 0.352;"></rect><rect x="1255.8195488721803" y="90" width="82.03007518796994" height="224.66666666666669" style="stroke: red; fill: rgb(255, 179, 102); opacity: 0.1;"></rect><rect x="1362.8496240601503" y="90" width="82.03007518796994" height="224.66666666666669" style="stroke: red; fill: rgb(128, 255, 128); opacity: 0.1;"></rect><rect x="1469.8796992481202" y="90" width="89.53007518796994" height="224.66666666666669" style="stroke: red; fill: rgb(210, 121, 166); opacity: 0.1;"></rect><rect x="1569.4097744360902" y="90" width="89.53007518796994" height="224.66666666666669" style="stroke: red; fill: rgb(210, 121, 166); opacity: 0.1;"></rect><rect x="1683.9398496240601" y="90" width="82.03007518796994" height="224.66666666666669" style="stroke: red; fill: rgb(255, 102, 51); opacity: 0.1;"></rect><rect x="1790.96992481203" y="90" width="82.03007518796994" height="224.66666666666669" style="stroke: red; fill: rgb(102, 0, 255); opacity: 0.1;"></rect><rect x="1255.8195488721803" y="369.6666666666667" width="89.53007518796994" height="224.66666666666657" style="stroke: red; fill: rgb(0, 191, 255); opacity: 0.1;"></rect><rect x="1355.3496240601503" y="369.6666666666667" width="89.53007518796994" height="224.66666666666657" style="stroke: red; fill: rgb(0, 191, 255); opacity: 0.1;"></rect><rect x="1255.8195488721803" y="649.3333333333333" width="189.06015037593988" height="84.83333333333326" style="stroke: red; fill: rgb(83, 198, 83); opacity: 0.1;"></rect><rect x="1255.8195488721803" y="789.1666666666665" width="189.06015037593988" height="84.83333333333326" style="stroke: red; fill: rgb(255, 128, 0); opacity: 0.1;"></rect><rect x="1469.8796992481202" y="369.6666666666667" width="125.20676691729318" height="154.74999999999994" style="stroke: red; fill: rgb(64, 45, 84); opacity: 0.1;"></rect><rect x="1605.0864661654134" y="369.6666666666667" width="125.20676691729318" height="154.74999999999994" style="stroke: red; fill: rgb(64, 45, 84); opacity: 0.1;"></rect><rect x="1755.2932330827066" y="369.6666666666667" width="117.70676691729318" height="154.74999999999994" style="stroke: red; fill: rgb(209, 137, 117); opacity: 0.1;"></rect><rect x="1469.8796992481202" y="579.4166666666666" width="231.87218045112786" height="84.02777777777771" style="stroke: red; fill: rgb(143, 209, 117); opacity: 0.1;"></rect><rect x="1469.8796992481202" y="673.4444444444443" width="231.87218045112786" height="84.02777777777783" style="stroke: red; fill: rgb(143, 209, 117); opacity: 0.1;"></rect><rect x="1469.8796992481202" y="812.4722222222222" width="231.87218045112786" height="61.52777777777783" style="stroke: red; fill: rgb(255, 102, 255); opacity: 0.1;"></rect><rect x="1726.751879699248" y="579.4166666666666" width="146.2481203007519" height="119.79166666666663" style="stroke: red; fill: rgb(255, 179, 102); opacity: 0.1;"></rect><rect x="1726.751879699248" y="754.2083333333333" width="146.2481203007519" height="119.79166666666674" style="stroke: red; fill: rgb(128, 255, 128); opacity: 0.1;"></rect><text x="1" y="110" font-size="1rem" fill="white">地段: 750002</text><text x="1" y="326.2371134020618" font-size="1rem" fill="white">地段: 530002</text><text x="1" y="538.1494845360825" font-size="1rem" fill="white">地段: 6400000</text><text x="1" y="745.7371134020618" font-size="1rem" fill="white">地段: 7540000</text><text x="277.8511278195489" y="110" font-size="1rem" fill="white">地段: 7730003</text><text x="464.22771213748655" y="110" font-size="1rem" fill="white">地段: 6460003</text><text x="277.8511278195489" y="360.16657936092196" font-size="1rem" fill="white">地段: 620000</text><text x="277.8511278195489" y="497.4899598393574" font-size="1rem" fill="white">地段: 5360000</text><text x="277.8511278195489" y="626.6164658634539" font-size="1rem" fill="white">地段: 1500000</text><text x="277.8511278195489" y="800.7429718875502" font-size="1rem" fill="white">地段: 3640000</text><text x="633.190977443609" y="110" font-size="1rem" fill="white">地段: 2660000</text><text x="633.190977443609" y="244.0918158567775" font-size="1rem" fill="white">地段: 4950000</text><text x="633.190977443609" y="420.0652173913044" font-size="1rem" fill="white">地段: 1920000</text><text x="827.7704944178628" y="420.0652173913044" font-size="1rem" fill="white">地段: 4160000</text><text x="633.190977443609" y="660.8217391304348" font-size="1rem" fill="white">地段: 840000</text><text x="633.190977443609" y="806.7347826086957" font-size="1rem" fill="white">地段: 1860000</text><text x="961.4165413533834" y="110" font-size="1rem" fill="white">地段: 5840003</text><text x="961.4165413533834" y="259.9661835748792" font-size="1rem" fill="white">地段: 730019</text><text x="961.4165413533834" y="383.0623256446894" font-size="1rem" fill="white">地段: 30043</text><text x="961.4165413533834" y="547.7391304347826" font-size="1rem" fill="white">地段: 2320000</text><text x="961.4165413533834" y="685.5458937198068" font-size="1rem" fill="white">地段: 70000</text><text x="961.4165413533834" y="819.2995169082126" font-size="1rem" fill="white">地段: 1260000</text><text x="1256.8195488721803" y="110" font-size="1rem" fill="white">地段: 4580000</text><text x="1363.8496240601503" y="110" font-size="1rem" fill="white">地段: 3850000</text><text x="1470.8796992481202" y="110" font-size="1rem" fill="white">地段: 3130000</text><text x="1570.4097744360902" y="110" font-size="1rem" fill="white">地段: 2930003</text><text x="1684.9398496240601" y="110" font-size="1rem" fill="white">地段: 5770000</text><text x="1791.96992481203" y="110" font-size="1rem" fill="white">地段: 530000</text><text x="1256.8195488721803" y="389.6666666666667" font-size="1rem" fill="white">地段: 440000</text><text x="1356.3496240601503" y="389.6666666666667" font-size="1rem" fill="white">地段: 5340000</text><text x="1256.8195488721803" y="669.3333333333333" font-size="1rem" fill="white">地段: 6580000</text><text x="1256.8195488721803" y="809.1666666666665" font-size="1rem" fill="white">地段: 5470000</text><text x="1470.8796992481202" y="389.6666666666667" font-size="1rem" fill="white">地段: 8420000</text><text x="1606.0864661654134" y="389.6666666666667" font-size="1rem" fill="white">地段: 2700000</text><text x="1756.2932330827066" y="389.6666666666667" font-size="1rem" fill="white">地段: 890000</text><text x="1470.8796992481202" y="599.4166666666666" font-size="1rem" fill="white">地段: 510000</text><text x="1470.8796992481202" y="693.4444444444443" font-size="1rem" fill="white">地段: 4360000</text><text x="1470.8796992481202" y="832.4722222222222" font-size="1rem" fill="white">地段: 3610000</text><text x="1727.751879699248" y="599.4166666666666" font-size="1rem" fill="white">地段: 16090000</text><text x="1727.751879699248" y="774.2083333333333" font-size="1rem" fill="white">地段: 1670000</text><text x="1" y="125" font-size=".9rem" fill="white">100</text><text x="1" y="341.2371134020618" font-size=".9rem" fill="white">98</text><text x="1" y="553.1494845360825" font-size=".9rem" fill="white">96</text><text x="1" y="760.7371134020618" font-size=".9rem" fill="white">94</text><text x="277.8511278195489" y="125" font-size=".9rem" fill="white">92</text><text x="464.22771213748655" y="125" font-size=".9rem" fill="white">76</text><text x="277.8511278195489" y="375.16657936092196" font-size=".9rem" fill="white">62</text><text x="277.8511278195489" y="512.4899598393574" font-size=".9rem" fill="white">90</text><text x="277.8511278195489" y="641.6164658634539" font-size=".9rem" fill="white">90</text><text x="277.8511278195489" y="815.7429718875502" font-size=".9rem" fill="white">88</text><text x="633.190977443609" y="125" font-size=".9rem" fill="white">86</text><text x="633.190977443609" y="259.0918158567775" font-size=".9rem" fill="white">84</text><text x="633.190977443609" y="435.0652173913044" font-size=".9rem" fill="white">82</text><text x="827.7704944178628" y="435.0652173913044" font-size=".9rem" fill="white"></text><text x="633.190977443609" y="675.8217391304348" font-size=".9rem" fill="white">80</text><text x="633.190977443609" y="821.7347826086957" font-size=".9rem" fill="white">78</text><text x="961.4165413533834" y="125" font-size=".9rem" fill="white">74</text><text x="961.4165413533834" y="274.9661835748792" font-size=".9rem" fill="white">72</text><text x="961.4165413533834" y="398.0623256446894" font-size=".9rem" fill="white">70</text><text x="961.4165413533834" y="562.7391304347826" font-size=".9rem" fill="white">68</text><text x="961.4165413533834" y="700.5458937198068" font-size=".9rem" fill="white">66</text><text x="961.4165413533834" y="834.2995169082126" font-size=".9rem" fill="white">64</text><text x="1256.8195488721803" y="125" font-size=".9rem" fill="white"></text><text x="1363.8496240601503" y="125" font-size=".9rem" fill="white"></text><text x="1470.8796992481202" y="125" font-size=".9rem" fill="white"></text><text x="1570.4097744360902" y="125" font-size=".9rem" fill="white"></text><text x="1684.9398496240601" y="125" font-size=".9rem" fill="white"></text><text x="1791.96992481203" y="125" font-size=".9rem" fill="white"></text><text x="1256.8195488721803" y="404.6666666666667" font-size=".9rem" fill="white"></text><text x="1356.3496240601503" y="404.6666666666667" font-size=".9rem" fill="white"></text><text x="1256.8195488721803" y="684.3333333333333" font-size=".9rem" fill="white"></text><text x="1256.8195488721803" y="824.1666666666665" font-size=".9rem" fill="white"></text><text x="1470.8796992481202" y="404.6666666666667" font-size=".9rem" fill="white"></text><text x="1606.0864661654134" y="404.6666666666667" font-size=".9rem" fill="white"></text><text x="1756.2932330827066" y="404.6666666666667" font-size=".9rem" fill="white"></text><text x="1470.8796992481202" y="614.4166666666666" font-size=".9rem" fill="white"></text><text x="1470.8796992481202" y="708.4444444444443" font-size=".9rem" fill="white"></text><text x="1470.8796992481202" y="847.4722222222222" font-size=".9rem" fill="white"></text><text x="1727.751879699248" y="614.4166666666666" font-size=".9rem" fill="white"></text><text x="1727.751879699248" y="789.2083333333333" font-size=".9rem" fill="white"></text><text x="1" y="140" font-size=".9rem" fill="white">(3200元)</text><text x="1" y="356.2371134020618" font-size=".9rem" fill="white">(4700元)</text><text x="1" y="568.1494845360825" font-size=".9rem" fill="white">(24400元)</text><text x="1" y="775.7371134020618" font-size=".9rem" fill="white">(31700元)</text><text x="277.8511278195489" y="140" font-size=".9rem" fill="white">(34000元)</text><text x="464.22771213748655" y="140" font-size=".9rem" fill="white">(69345元)</text><text x="277.8511278195489" y="390.16657936092196" font-size=".9rem" fill="white">(111000元)</text><text x="277.8511278195489" y="527.4899598393574" font-size=".9rem" fill="white">(48400元)</text><text x="277.8511278195489" y="656.6164658634539" font-size=".9rem" fill="white">(48400元)</text><text x="277.8511278195489" y="830.7429718875502" font-size=".9rem" fill="white">(53800元)</text><text x="633.190977443609" y="140" font-size=".9rem" fill="white">(59500元)</text><text x="633.190977443609" y="274.0918158567775" font-size=".9rem" fill="white">(61200元)</text><text x="633.190977443609" y="450.0652173913044" font-size=".9rem" fill="white">(62600元)</text><text x="827.7704944178628" y="450.0652173913044" font-size=".9rem" fill="white">(115000元)</text><text x="633.190977443609" y="690.8217391304348" font-size=".9rem" fill="white">(66900元)</text><text x="633.190977443609" y="836.7347826086957" font-size=".9rem" fill="white">(68700元)</text><text x="961.4165413533834" y="140" font-size=".9rem" fill="white">(74400元)</text><text x="961.4165413533834" y="289.9661835748792" font-size=".9rem" fill="white">(77404元)</text><text x="961.4165413533834" y="413.0623256446894" font-size=".9rem" fill="white">(89428元)</text><text x="961.4165413533834" y="577.7391304347826" font-size=".9rem" fill="white">(96907元)</text><text x="961.4165413533834" y="715.5458937198068" font-size=".9rem" fill="white">(102000元)</text><text x="961.4165413533834" y="849.2995169082126" font-size=".9rem" fill="white">(110000元)</text><text x="1256.8195488721803" y="140" font-size=".9rem" fill="white">(118000元)</text><text x="1363.8496240601503" y="140" font-size=".9rem" fill="white">(118000元)</text><text x="1470.8796992481202" y="140" font-size=".9rem" fill="white">(121000元)</text><text x="1570.4097744360902" y="140" font-size=".9rem" fill="white">(174000元)</text><text x="1684.9398496240601" y="140" font-size=".9rem" fill="white">(140000元)</text><text x="1791.96992481203" y="140" font-size=".9rem" fill="white">(148000元)</text><text x="1256.8195488721803" y="419.6666666666667" font-size=".9rem" fill="white">(149000元)</text><text x="1356.3496240601503" y="419.6666666666667" font-size=".9rem" fill="white">(156000元)</text><text x="1256.8195488721803" y="699.3333333333333" font-size=".9rem" fill="white">(149000元)</text><text x="1256.8195488721803" y="839.1666666666665" font-size=".9rem" fill="white">(150000元)</text><text x="1470.8796992481202" y="419.6666666666667" font-size=".9rem" fill="white">(152000元)</text><text x="1606.0864661654134" y="419.6666666666667" font-size=".9rem" fill="white">(297000元)</text><text x="1756.2932330827066" y="419.6666666666667" font-size=".9rem" fill="white">(152000元)</text><text x="1470.8796992481202" y="629.4166666666666" font-size=".9rem" fill="white">(155000元)</text><text x="1470.8796992481202" y="723.4444444444443" font-size=".9rem" fill="white">(226236元)</text><text x="1470.8796992481202" y="862.4722222222222" font-size=".9rem" fill="white">(210000元)</text><text x="1727.751879699248" y="629.4166666666666" font-size=".9rem" fill="white">(210109元)</text><text x="1727.751879699248" y="804.2083333333333" font-size=".9rem" fill="white">(229000元)</text><text x="1" y="66" font-size="1.1rem" fill="black">頂坡角段啞口坑小段</text><text x="1" y="282.2371134020618" font-size="1.1rem" fill="black">十八份坑段十八份坑小段</text><text x="1" y="494.14948453608247" font-size="1.1rem" fill="black">四維段</text><text x="1" y="701.7371134020618" font-size="1.1rem" fill="black">興化段</text><text x="277.8511278195489" y="66" font-size="1.1rem" fill="black">瓊林段</text><text x="277.8511278195489" y="453.4899598393574" font-size="1.1rem" fill="black">公館段</text><text x="277.8511278195489" y="756.7429718875502" font-size="1.1rem" fill="black">光榮段</text><text x="633.190977443609" y="66" font-size="1.1rem" fill="black">安和段</text><text x="633.190977443609" y="376.0652173913044" font-size="1.1rem" fill="black">後港段</text><text x="633.190977443609" y="616.8217391304348" font-size="1.1rem" fill="black">新樹段</text><text x="633.190977443609" y="762.7347826086957" font-size="1.1rem" fill="black">頭興段</text><text x="961.4165413533834" y="66" font-size="1.1rem" fill="black">化成段</text><text x="961.4165413533834" y="215.96618357487924" font-size="1.1rem" fill="black">海山頭段石龜小段</text><text x="961.4165413533834" y="503.7391304347826" font-size="1.1rem" fill="black">中港厝段</text><text x="961.4165413533834" y="641.5458937198068" font-size="1.1rem" fill="black">信華段二小段</text><text x="961.4165413533834" y="775.2995169082126" font-size="1.1rem" fill="black">安泰段</text><text x="1256.8195488721803" y="66" font-size="1.1rem" fill="black">瓊泰段</text><text x="1363.8496240601503" y="66" font-size="1.1rem" fill="black">榮和段</text><text x="1470.8796992481202" y="66" font-size="1.1rem" fill="black">裕民段</text><text x="1684.9398496240601" y="66" font-size="1.1rem" fill="black">文德段</text><text x="1791.96992481203" y="66" font-size="1.1rem" fill="black">思賢段</text><text x="1256.8195488721803" y="345.6666666666667" font-size="1.1rem" fill="black">立德段</text><text x="1256.8195488721803" y="625.3333333333333" font-size="1.1rem" fill="black">鴻福段</text><text x="1256.8195488721803" y="765.1666666666665" font-size="1.1rem" fill="black">昌隆段</text><text x="1470.8796992481202" y="345.6666666666667" font-size="1.1rem" fill="black">全安段</text><text x="1756.2932330827066" y="345.6666666666667" font-size="1.1rem" fill="black">忠孝段</text><text x="1470.8796992481202" y="555.4166666666666" font-size="1.1rem" fill="black">榮富段</text><text x="1470.8796992481202" y="788.4722222222222" font-size="1.1rem" fill="black">恒安段</text><text x="1727.751879699248" y="555.4166666666666" font-size="1.1rem" fill="black">思源段</text><text x="1727.751879699248" y="730.2083333333333" font-size="1.1rem" fill="black">副都心段九小段</text></g></svg></div></div>
+		
+		
+		<script>
+			//產生SVG
+			function mkSVG(container, bosses, data){
+				const treemap = document.createElement('div')
+				
+				const margin = {top: 10, right: 10, bottom: 10, left: 10};
+				const height = container.clientHeight - margin.top - margin.bottom;
+				const width = container.clientWidth - margin.left - margin.right;
+				
+				const svg = d3.select(treemap)
+							  .append('svg')
+							  .attr('width', width + margin.left + margin.right)
+							  .attr('height', height + margin.top + margin.bottom)
+							  .append('g')
+							
+				//利用d3.hierarchy產生x y的資料
+				const d3ds = d3.hierarchy(data).sum(({value}) => value)
+				
+				
+				//設定svg位置
+				d3.treemap()
+				  .size([width, height])
+				  .paddingTop(45)
+				  .paddingRight(15)
+				  .paddingInner(10) 
+				  (d3ds)
+				  
+				  
+				//設定指導教授顏色
+				const color = d3.scaleOrdinal()
+								.domain(bosses)
+								.range([ "#402D54", "#D18975", "#8FD175", "#ff66ff", "#ffb366", "#80ff80", "#d279a6", "#ff6633", "#6600ff", "#00bfff", "#53c653", "#ff8000"])
+								
+				//設定透明度，分數越低越透明
+				const opacity = d3.scaleLinear()
+								.domain([100, 50])
+								.range([1,.1])
+								
+				//化長方形
+				svg
+					.selectAll('rectangle')
+					.data(d3ds.leaves())
+					.enter()
+					.append('rect')
+					 .attr('x', ({x0}) => x0)
+					 .attr('y', ({y0}) => y0)
+					 .attr('width', ({x0,x1}) => x1-x0)
+					 .attr('height', ({y0,y1}) => y1-y0)
+					 .style('stroke', 'red')
+					 .style('fill', ({parent}) => color(parent.data.name))
+					 .style('opacity', (d) => opacity(d.data.value))
+					 
+				
+				//寫學生姓名
+				svg
+					.selectAll('studentNames')
+					.data(d3ds.leaves())
+					.enter()
+					.append('text')
+					 .attr('x', ({x0}) => x0 + 1)
+					 .attr('y', ({y0}) => y0 + 20)
+					 .text(({data}) => data.name)
+					 .attr('font-size', '1rem')
+					 .attr('fill', 'white')
+				
+				//寫學生分數
+				svg
+					.selectAll('studentScore')
+					.data(d3ds.leaves())
+					.enter()
+					.append('text')
+					 .attr('x', ({x0}) => x0 + 1)
+					 .attr('y', ({y0}) => y0 + 35)
+					 .text(({data}) => data.value < 60 ? '' : data.value)
+					 .attr('font-size', '.9rem')
+					 .attr('fill', 'white')
+					 
+				svg
+					.selectAll('studentSecond')
+					.data(d3ds.leaves())
+					.enter()
+					.append('text')
+					 .attr('x', ({x0}) => x0 + 1)
+					 .attr('y', ({y0}) => y0 + 50)
+					 .text(({data}) => '(' + data.seconds + '元)')
+					 .attr('font-size', '.9rem')
+					 .attr('fill', 'white')
+					 
+				svg
+					.selectAll('labertory')
+					.data(d3ds.descendants().filter(function(d){return d.depth==1}))
+					.enter()
+					.append('text')
+					 .attr('x', ({x0}) => x0 + 1)
+					 .attr('y', ({y0}) => y0 + 21)
+					 .text(({data}) => data.name)
+					 .attr('font-size', '1.1rem')
+					 .attr('fill', 'black')
+					 
+				return treemap
+			}	
+		</script>
+		
+		<script>
+			//產生min到max之間的亂數
+			function getRandom(min,max){
+				return Math.floor(Math.random()*(max-min+1))+min;
+			};
+			window.addEventListener('load', () => {
+				const treemapContainer = document.getElementById('treemap')
+				
+				document.getElementById('dropfile').addEventListener('dragover', (evt) => {
+					evt.preventDefault()
+				})
+				
+				document.getElementById('dropfile').addEventListener('drop', (evt) => {
+					evt.preventDefault()
+					
+					const { files } = evt.dataTransfer
+					
+					if(files.length){
+						if(treemapContainer.innerHTML.length){
+							treemapContainer.innerHTML = ''
+						}
+					
+						const csvFile = files[0]
+						
+						//讀取csv
+						const fr = new FileReader()
+						
+						fr.onload = () => {
+							const allBoss = []
+							const data = fr.result.split('\n').map(e => e.split(','))
+							let studentArr = []
+							for(let i=0;i<40;i++){
+								studentArr.push(data[getRandom(0,data.length-1)])
+							}
+							const d3Json = {
+								children: [],
+								name: 'vis2021s'
+							}
+							
+							//先由小到大排列，算出名次、級距、再算出分數
+							const mapping = new Array(41).fill(-1)
+							const scoreSort = studentArr.sort((x,y) => {
+								let a = isNaN(parseFloat(x[1])) ? 40 : parseFloat(x[1])
+								let b = isNaN(parseFloat(y[1])) ? 40 : parseFloat(y[1])
+								
+								return a-b
+							}).map(e => isNaN(parseFloat(e[1])) ? 40 : parseFloat(e[1]))
+							
+							
+							const scoreSet = [...new Set([...scoreSort.filter(e => e<=scoreSort[parseInt(scoreSort.length/2)])])]
+							const step = (100 - 60) / scoreSet.length
+							console.log(scoreSet)
+							console.log(step)
+							for(let i of scoreSort){
+								const idx = scoreSet.indexOf(i)
+								let score
+								if(idx == -1){
+									score = 50
+								}
+								else{
+									score = (100 - step * idx).toFixed(2)
+								}
+								mapping[i] = score
+							}
+							
+							console.log(mapping)
+							
+							console.log(studentArr)
+							for(let i of studentArr){
+								const bossName = i[2].length ? i[2] :'未知'
+								
+								
+								if(allBoss.indexOf(bossName) == -1){
+									allBoss.push(bossName)
+									d3Json.children.push({
+										name: bossName,
+										children: []
+									})
+								}
+								
+								const seconds = isNaN(parseInt(i[1])) ? 40 : parseInt(i[1])
+								
+								d3Json.children.find(e => e.name == bossName).children.push({
+									name: '地段: ' + i[0],
+									seconds,
+									value: parseFloat(mapping[seconds])
+								})
+								
+
+								
+							}
+							treemapContainer.appendChild(mkSVG(treemapContainer, allBoss, d3Json))
+							
+						}
+						
+						fr.readAsText(csvFile)
+					}
+					
+				})
+
+				
+			
+			})
+		</script>
+	
+	
+	
+</body></html>

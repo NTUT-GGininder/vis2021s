@@ -170,7 +170,7 @@
 					.append('text')
 					 .attr('x', ({x0}) => x0 + 1)
 					 .attr('y', ({y0}) => y0 + 50)
-					 .text(({data}) => parseFloat(data.seconds) > 30 ? '不及格' : '(' + data.seconds + '秒)')
+					 .text(({data}) => '(' + data.seconds + '元)')
 					 .attr('font-size', '.9rem')
 					 .attr('fill', 'white')
 					 
@@ -190,6 +190,10 @@
 		</script>
 		
 		<script>
+			//產生min到max之間的亂數
+			function getRandom(min,max){
+				return Math.floor(Math.random()*(max-min+1))+min;
+			};
 			window.addEventListener('load', () => {
 				const treemapContainer = document.getElementById('treemap')
 				
@@ -214,8 +218,11 @@
 						
 						fr.onload = () => {
 							const allBoss = []
-							const studentArr = fr.result.split('\n').map(e => e.split(','))
-							
+							const data = fr.result.split('\n').map(e => e.split(','))
+							let studentArr = []
+							for(let i=0;i<40;i++){
+								studentArr.push(data[getRandom(0,data.length-1)])
+							}
 							const d3Json = {
 								children: [],
 								name: 'vis2021s'
@@ -224,15 +231,17 @@
 							//先由小到大排列，算出名次、級距、再算出分數
 							const mapping = new Array(41).fill(-1)
 							const scoreSort = studentArr.sort((x,y) => {
-								let a = isNaN(parseFloat(x[3])) ? 40 : parseFloat(x[3])
-								let b = isNaN(parseFloat(y[3])) ? 40 : parseFloat(y[3])
+								let a = isNaN(parseFloat(x[1])) ? 40 : parseFloat(x[1])
+								let b = isNaN(parseFloat(y[1])) ? 40 : parseFloat(y[1])
 								
 								return a-b
-							}).map(e => isNaN(parseFloat(e[3])) ? 40 : parseFloat(e[3]))
+							}).map(e => isNaN(parseFloat(e[1])) ? 40 : parseFloat(e[1]))
 							
-							const scoreSet = [...new Set([...scoreSort.filter(e => e<=30)])]
+							
+							const scoreSet = [...new Set([...scoreSort.filter(e => e<=scoreSort[parseInt(scoreSort.length/2)])])]
 							const step = (100 - 60) / scoreSet.length
-							
+							console.log(scoreSet)
+							console.log(step)
 							for(let i of scoreSort){
 								const idx = scoreSet.indexOf(i)
 								let score
@@ -245,11 +254,11 @@
 								mapping[i] = score
 							}
 							
+							console.log(mapping)
 							
-							
-							
+							console.log(studentArr)
 							for(let i of studentArr){
-								const bossName = i[2].length ? i[2] : (i[1] == '碩' ? '未知' : '資工四')
+								const bossName = i[2].length ? i[2] :'未知'
 								
 								
 								if(allBoss.indexOf(bossName) == -1){
@@ -260,10 +269,10 @@
 									})
 								}
 								
-								const seconds = isNaN(parseInt(i[3])) ? 40 : parseInt(i[3])
+								const seconds = isNaN(parseInt(i[1])) ? 40 : parseInt(i[1])
 								
 								d3Json.children.find(e => e.name == bossName).children.push({
-									name: '姓名: ' + i[0],
+									name: '地段: ' + i[0],
 									seconds,
 									value: parseFloat(mapping[seconds])
 								})

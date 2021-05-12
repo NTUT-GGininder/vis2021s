@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
+<head>
     <meta charset="utf-8">
-    <title>D3 Page Template</title>
-    <script src="http://d3js.org/d3.v6.min.js" charset="utf-8"></script> <!-- v6.5.0 -->
+    <title>Lab</title>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> <!-- v6.5.0 -->
+    <style type="text/css">
+    	div.bar {
+    		border:1px black solid;
+    		margin: 1px 2px 1px 2px;
+        display: inline-block;
+		  	width: 18px;
+		  	height: 75px; /* We'll override height later */
+		  	vertical-align: bottom;
+		  	text-align: center;
+		}
+    </style>
 </head>
 <body>
     <script type="text/javascript">
-      // Your beautiful D3 code will go here
+	    // Your beautiful D3 code will go here
+	    d3.csv("data.csv", function(data){
+        const MaximumF = Math.max(...data.map(d => d['頻率']));
+        var body = document.body,
+              html = document.documentElement;
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                              html.clientHeight, html.scrollHeight, html.offsetHeight );
+        var width = Math.max( body.scrollWidth, body.offsetWidth, 
+                                html.clientWidth, html.scrollWidth, html.offsetWidth );
+                                        let UnitHeight = (height - 30) / MaximumF;
+        let UnitWidth = (width - 8 * data.length) / data.length;
+        console.log(UnitWidth);
+	    	d3.select("body")
+  			.selectAll("div")
+  			.data(data)
+  			.enter()
+  			.append("div")
+  			.text(function(d){
+  				return d['頻率'];
+  			})
+  			.attr("class","bar")
+  			.style("height",function(d){
+  				return d['頻率']*UnitHeight +'px';
+  			})
+        .style("width",function(d){
+  				return UnitWidth +'px';
+  			})
+        .style('background-color', function(d) {
+            return 'rgba(255, 0, 255, ' + (d['頻率'] / MaximumF) + ')';
+        });
+	    });
     </script>
   </body>
 </html>
-  

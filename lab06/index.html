@@ -46,14 +46,17 @@
           color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
-      }
-
-
+      } 
+      
+      /* Data in strings like it would be if imported from a csv */
+      
+      d3.csv("data.csv",function(data) {
+      console.log(data);
       // Setup svg using Bostock's margin convention
       
       var margin = {top: 20, right: 60, bottom: 35, left: 30};
       
-      var width = 1500 - margin.left - margin.right,
+      var width = 18 * data.length - margin.left - margin.right,
           height = 600 - margin.top - margin.bottom;
       
       var svg = d3.select("body")
@@ -62,12 +65,6 @@
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-      
-      
-      /* Data in strings like it would be if imported from a csv */
-      
-      d3.csv("data.csv",function(data) {
-      console.log(data);
       // Transpose the data into layers
       var dataset = d3.layout.stack()(["國文","英文","法文","德文","日文"].map(function(score) {
         return data.map(function(d,i) {

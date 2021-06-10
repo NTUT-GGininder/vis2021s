@@ -70,7 +70,7 @@ $(function(){
     readData(leftArray, './src/left.srt');
     readData(rightArray,'./src/right.srt')
     console.log(leftArray);
-    $("#video").on("play seeked", play);
+    $("#video").on("play seeked loadeddata", play);
     $("#video").on("pause",function(e){
         console.log("pause");
         $("svg").empty();

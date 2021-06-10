@@ -60,7 +60,7 @@ function play(){
     $("svg").empty();
     let height = 40;
     let width = $('#video').width();
-    $('#mixU').attr('viewBox', '0 0 '+width+' '+height+'px');
+    // $('#mixU').attr('viewBox', '0 0 '+width+' '+height+'px');
     playGrandBlue(width, height, this.currentTime);
 }
 //init

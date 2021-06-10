@@ -4,11 +4,69 @@
     <meta charset="utf-8">
     <title>D3 Page Template</title>
     <script src="http://d3js.org/d3.v6.min.js" charset="utf-8"></script> <!-- v6.5.0 -->
+    <script src="./src/jquery-3.6.0.min.js"></script>
+    <script src="./src/index.js"></script>
+    <style>
+      @font-face {
+        font-family: wt028;
+        src: url(./src/wt028.ttf);
+      }
+      @font-face {
+        font-family: irohamaru-Regular;
+        src: url(./src/irohamaru-Regular.ttf);
+      }
+      .container { position:relative; }
+      .container video {
+          position:relative;
+          z-index:0;
+      }
+      .overlay {
+          position:absolute;
+          bottom:0px;
+          width: 100%;
+          height: 70pt;
+          z-index:1;
+      }
+      text{
+        font-family: irohamaru-Regular;
+        color:#FFFFFF;
+      }
+      #sperate{
+        width:100%;
+        padding: 0;
+      }
+      #sperate > div > svg{
+        width: 49%;
+        margin: 0;
+        float: flex;
+      }
+    </style>
 </head>
 <body>
-    <script type="text/javascript">
-      // Your beautiful D3 code will go here
-    </script>
-  </body>
+  <div class="container">
+    <video width="1280px" height="720px" height="auto" id="video" controls>
+        <source src="./src/1.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+      <div id='mix'>
+        <svg id='mixU' width='100%' height='30pt' preserveAspectRatio="xMidYMax slice"></svg>
+        <svg id='mixD' width='100%' height='30pt' preserveAspectRatio="xMidYMax slice"></svg>
+      </div>
+      <div id='sperate'>
+        <div>
+          <svg id='speLU' height='30pt' preserveAspectRatio="xMaxYMax slice"></svg>
+          <svg id='speRU' height='30pt' preserveAspectRatio="xMinYMax slice"></svg>
+          
+        </div>
+        <div>
+          <svg id='speLD' height='30pt' preserveAspectRatio="xMaxYMax slice"></svg>
+          <svg id='speRD' height='30pt' preserveAspectRatio="xMinYMax slice"></svg>
+        </div>
+      </div>
+    </div>
+</div>
+    
+</body>
+
 </html>
   

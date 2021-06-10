@@ -173,6 +173,7 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.orgsubtitle;
         })
+        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')
@@ -209,6 +210,7 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.subtitle;
         })
+        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')
@@ -245,6 +247,7 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.orgsubtitle;
         })
+        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')
@@ -281,6 +284,7 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.subtitle;
         })
+        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')

@@ -166,6 +166,7 @@ function playGrandBlue(width, height, currentTime) {
         .attr('opacity', 0);
 
         d3.select('#speRU')
+        .attr('width', width/2)
         .selectAll('text')
         .data(rightArray)
         .enter()
@@ -173,7 +174,6 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.orgsubtitle;
         })
-        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')
@@ -203,6 +203,7 @@ function playGrandBlue(width, height, currentTime) {
         .attr('opacity', 0);
 
         d3.select('#speRD')
+        .attr('width', width/2)
         .selectAll('text')
         .data(rightArray)
         .enter()
@@ -210,7 +211,6 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.subtitle;
         })
-        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')
@@ -240,6 +240,7 @@ function playGrandBlue(width, height, currentTime) {
         .attr('opacity', 0);
 
         d3.select('#speLU')
+        .attr('width', width/2)
         .selectAll('text')
         .data(leftArray)
         .enter()
@@ -247,7 +248,6 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.orgsubtitle;
         })
-        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')
@@ -277,6 +277,7 @@ function playGrandBlue(width, height, currentTime) {
         .attr('opacity', 0);
 
         d3.select('#speLD')
+        .attr('width', width/2)
         .selectAll('text')
         .data(leftArray)
         .enter()
@@ -284,7 +285,6 @@ function playGrandBlue(width, height, currentTime) {
         .text(function(d) {
             return d.subtitle;
         })
-        .attr('width', width)
         .attr('x', width / 4)
         .attr('y', height/2)
         .attr('font-size', FontSize/2+'pt')

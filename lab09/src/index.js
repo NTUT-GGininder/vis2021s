@@ -322,7 +322,7 @@ function playGrandBlue(width, height, currentTime) {
         })
         .style('display', 'none')
     d3.select('#sperate')
-        .style('width', width)
+        .style('width', width+'px')
         .transition()
         .delay(function(){
             if(currentTime > myArray[myArray.length-1].end)

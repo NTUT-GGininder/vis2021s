@@ -5,6 +5,7 @@
     <title>D3 Page Template</title>
     <script src="./src/d3.v6.min.js"></script> <!-- v6.5.0 -->
     <script src="./src/jquery-3.6.0.min.js"></script>
+    <script src="./src/Goodbye Declaration/GD.js"></script>
     <script src="./src/index.js"></script>
     <style>
       @font-face {
@@ -20,16 +21,21 @@
           position:relative;
           z-index:0;
       }
+      .overlayAll {
+          position:absolute;
+          top: 0;
+          left: 0;
+          z-index:1;
+      }
       .overlay {
           position:absolute;
-          bottom:0px;
+          bottom:15px;
           width: 100%;
-          height: 70pt;
+          height: 75pt;
           z-index:1;
       }
       text{
         font-family: irohamaru-Regular;
-        color:#FFFFFF;
       }
       #sperate{
         width:100%;
@@ -43,6 +49,7 @@
     </style>
 </head>
 <body>
+  <h2>來源:</h2><a href='https://www.bilibili.com/video/BV14o4y1R7Cq'>https://www.bilibili.com/video/BV14o4y1R7Cq</a>
   <div class="container">
     <video width="1280px" height="720px" height="auto" id="video" controls>
         <source src="./src/1.mp4" type="video/mp4" />
@@ -64,9 +71,26 @@
         </div>
       </div>
     </div>
-</div>
-    <h2>請支持原作:</h2><a href='https://www.bilibili.com/video/BV14o4y1R7Cq'>https://www.bilibili.com/video/BV14o4y1R7Cq</a>
+  </div>
+  <h2>來源:</h2><a href='https://www.bilibili.com/video/BV1dU4y1W7FJ'>https://www.bilibili.com/video/BV1dU4y1W7FJ</a>
+  <div class="container">
+    <video width="1280px" height="720px" height="auto" id="video1" controls>
+        <source src="./src/Sincerely.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+        <svg id='sub1U' width='100%' height='30pt' preserveAspectRatio="xMidYMax slice"></svg>
+        <svg id='sub1D' width='100%' height='30pt' preserveAspectRatio="xMidYMax slice"></svg>
+    </div>
+  </div>
 </body>
-
+<h2>來源:</h2><a href='https://www.youtube.com/watch?v=qx_utoWZ9oo'>https://www.youtube.com/watch?v=qx_utoWZ9oo</a>
+<div class="container">
+  <video width="1280px" height="720px" id="video2" controls>
+      <source src="./src/Goodbye Declaration.mp4" type="video/mp4" />
+  </video>
+  <div class="overlayAll" style="width: 1280px; height: 720px; display: none;">
+    <svg id="SN"></svg>
+  </div>
+</div>
 </html>
   

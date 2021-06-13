@@ -175,8 +175,8 @@ $(function(){
         playGD(width, height, this.currentTime);
     });
     $("#video2").on("pause", function(e){
-        // $(this).closest('.container').find('svg').empty();
-        // $(this).closest('.container').find('.overlayAll').css("display","none");
+        $(this).closest('.container').find('svg').empty();
+        $(this).closest('.container').find('.overlayAll').css("display","none");
     });
 });
 

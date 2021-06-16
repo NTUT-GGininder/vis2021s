@@ -246,6 +246,8 @@ $(function(){
 });
 
 function playPauseGrandBlue(width, height, currentTime) {
+    d3.selectAll("#sperate").transition();
+    d3.selectAll('#mix').transition();
     playPauseOrgSub('mixU', myArray, width, height, height*0.8, currentTime);
     playPauseSub('mixD', myArray, width, height, height*0.8, currentTime);
     playPauseOrgSub('mixU', Ricks, width, height, height*0.8, currentTime);
@@ -256,6 +258,9 @@ function playPauseGrandBlue(width, height, currentTime) {
     playPauseSub('speLD', leftArray, width/2, height/2, height*0.8/2, currentTime);
 }
 function playGrandBlue(width, height, currentTime) { 
+    d3.selectAll("#sperate").transition();
+    d3.selectAll('#mix').transition();
+
     console.log(currentTime)
     if( myArray.length !==0 && rightArray.length !==0 && leftArray.length !==0){
         for(let i=myArray.length-1;i>=0;i--){

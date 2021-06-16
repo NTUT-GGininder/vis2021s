@@ -204,6 +204,10 @@ $(function(){
         console.log(vid.currentTime);
         vid.currentTime  = vidTime;
     });
+    $("#video2").on("pause", function(e){
+        $(this).closest('.container').find('svg').empty();
+        $(this).closest('.container').find('.overlayAll').css("display","none");
+    });
 });
 
 
@@ -272,4 +276,3 @@ function playSincerely(width, height, currentTime){
     playOrgSub('sub1U', sub1, width, height, FontSize, currentTime);
     playSub('sub1D', sub1, width, height, FontSize, currentTime);
 }
-

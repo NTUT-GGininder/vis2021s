@@ -89,6 +89,58 @@ function playOrgSub(svgID, texts, width, height, fontSize, currentTime=0){
         .attr('opacity', 0);
 }
 
+function playPauseSub(svgID, texts, width, height, fontSize, currentTime=0){
+    d3.select('#'+ svgID)
+        .attr('width', width)
+        .attr('height', height)
+        .selectAll('text')
+        .data(texts)
+        .enter()
+        .append('text')
+        .text(function(d) {
+            return d.subtitle;
+        })
+        .attr('x', width / 2)
+        .attr('y', height/2)
+        .attr('font-size', fontSize)
+        .attr('fill', function(d){ return d.color})
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline','central')
+        .attr('stroke', function(d){ return d.strokeColor})
+        .attr('stroke-width','1px')
+        .attr('opacity', function(d){
+            if(d.begin <= currentTime && d.end >= currentTime)
+                return 1;
+            return 0;
+        })
+}
+
+function playPauseOrgSub(svgID, texts, width, height, fontSize, currentTime=0){
+    d3.select('#'+ svgID)
+        .attr('width', width)
+        .attr('height', height)
+        .selectAll('text')
+        .data(texts)
+        .enter()
+        .append('text')
+        .text(function(d) {
+            return d.orgsubtitle;
+        })
+        .attr('x', width / 2)
+        .attr('y', height/2)
+        .attr('font-size', fontSize)
+        .attr('fill', function(d){ return d.color})
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline','middle')
+        .attr('stroke', function(d){ return d.strokeColor})
+        .attr('stroke-width','1px')
+        .attr('opacity', function(d){
+            if(d.begin <= currentTime && d.end >= currentTime)
+                return 1;
+            return 0;
+        })
+}
+
 function readData(Arr, src){
     d3.text(src).then(function(data) {
         console.log(data);
@@ -156,61 +208,53 @@ $(function(){
         return $(this).closest('.container').find('video').width();
     });
     $("#video").on("play seeked", function(e){
-        this.controls = false;
+        // this.controls = false;
         $(this).closest('.container').find('svg').empty();
         let height = $(this).closest(".container").find('.overlay').height() / 2;
         let width = $('#video').width();
         playGrandBlue(width, height, this.currentTime);
     });
     $("video").on("pause",function(e){
-        this.controls = true;
-        console.log("pause");
+        let height = $(this).closest(".container").find('.overlay').height() / 2 || $(this).height();
+        let width = $(this).width();
         $(this).closest('.container').find('svg').empty();
+        if($(this).prop('id') === 'video'){
+            playPauseGrandBlue(width, height, this.currentTime);
+        }
+        else if($(this).prop('id') === 'video1'){
+            playPauseSincerely(width, height, this.currentTime);
+        }
+        else if($(this).prop('id') === 'video2')
+        console.log(height);
+            playPauseGD(width, height, this.currentTime);
     })
     $("#video1").on("play seeked", function(e){
-        this.controls = false;
+        // this.controls = false;
         $(this).closest('.container').find('svg').empty();
         let height = $(this).closest(".container").find('.overlay').height() / 2;
         let width = $('#video1').width();
         playSincerely(width, height, this.currentTime);
     });
     $("#video2").on("play seeked", function(e){
-        this.controls = false;
+        // this.controls = false;
         $(this).closest('.container').find('svg').empty();
         $(this).closest('.container').find('.overlayAll').css("display","");
         let height = $(this).height();
         let width = $(this).width();
         playGD(width, height, this.currentTime);
     });
-
-    $('video').on('timeupdate',function(){
-        // console.log('update');
-        var percentage = ( this.currentTime / this.duration ) * 100;
-        // console.log($(this).closest('.container').find(".custom-seekbar span"));
-        $(this).closest('.container').find(".custom-seekbar span").css("width", percentage+"%");
-    });
-      
-    $(".custom-seekbar").on("click", function(e){
-        let vid = $(this).closest('.container').find('video')[0];
-        var offset = $(this).offset();
-        console.log(offset)
-        var left = (e.pageX - offset.left);
-        console.log(e.pageX)
-        var totalWidth = $(".custom-seekbar").width();
-        console.log(totalWidth)
-        var percentage = ( left / totalWidth );
-        var vidTime = vid.duration * percentage;
-        console.log(vid);
-        console.log(vid.currentTime);
-        vid.currentTime  = vidTime;
-    });
-    $("#video2").on("pause", function(e){
-        $(this).closest('.container').find('svg').empty();
-        $(this).closest('.container').find('.overlayAll').css("display","none");
-    });
 });
 
-
+function playPauseGrandBlue(width, height, currentTime) {
+    playPauseOrgSub('mixU', myArray, width, height, height*0.8, currentTime);
+    playPauseSub('mixD', myArray, width, height, height*0.8, currentTime);
+    playPauseOrgSub('mixU', Ricks, width, height, height*0.8, currentTime);
+    playPauseSub('mixD', Ricks, width, height, height*0.8, currentTime);
+    playPauseOrgSub('speRU', rightArray, width/2, height/2, height*0.8/2, currentTime);
+    playPauseSub('speRD', rightArray, width/2, height/2, height*0.8/2, currentTime);
+    playPauseOrgSub('speLU', leftArray, width/2, height/2, height*0.8/2, currentTime);
+    playPauseSub('speLD', leftArray, width/2, height/2, height*0.8/2, currentTime);
+}
 function playGrandBlue(width, height, currentTime) { 
     console.log(currentTime)
     if( myArray.length !==0 && rightArray.length !==0 && leftArray.length !==0){
@@ -265,13 +309,23 @@ function playGrandBlue(width, height, currentTime) {
         .style('display', '');
 }
 
+function playPauseSincerely(width, height, currentTime){
+    if(sub1.length!==0){
+        for(let i=sub1.length-1;i>=0;i--){
+            sub1[i]['color'] = 'white';
+            sub1[i]['strokeColor'] = '#f6e9cc';
+        }
+    }
+    playPauseOrgSub('sub1U', sub1, width, height, FontSize, currentTime);
+    playPauseSub('sub1D', sub1, width, height, FontSize, currentTime);
+}
+
 function playSincerely(width, height, currentTime){
     if(sub1.length!==0){
         for(let i=sub1.length-1;i>=0;i--){
             sub1[i]['color'] = 'white';
             sub1[i]['strokeColor'] = '#f6e9cc';
         }
-        console.log(sub1);
     }
     playOrgSub('sub1U', sub1, width, height, FontSize, currentTime);
     playSub('sub1D', sub1, width, height, FontSize, currentTime);

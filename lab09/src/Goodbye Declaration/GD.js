@@ -123,11 +123,7 @@ function read(Arr, src){
     });
 }
 
-function playGD(width, height, currentTime){
-    console.log('GD');
-    console.log(SN);
-    console.log(verse);
-    console.log(chorus);
+function playPauseGD(width, height, currentTime){
     d3.select('#SN')
         .attr('width', width)
         .attr('height', height)
@@ -149,7 +145,56 @@ function playGD(width, height, currentTime){
         })
         .attr('transform',function(d){
             if(!isEmpty(d.rotate)){
-                console.log('rotate',d);
+                // console.log('rotate',d);
+                return 'rotate('+ d.rotate['degree'] +','+ $(this).attr('x') +','+ $(this).attr('y') +')';
+            }
+            return '';
+        })
+        .attr('fill', function(d){ return d.color})
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline','central')
+        .attr('stroke', function(d){ return d.strokeColor})
+        .attr('stroke-width','1px')
+        .attr('writing-mode',function(d){
+            if(d['writing-mode']==1){
+                return 'tb';
+            }
+            return '';
+        })
+        .attr('opacity', function(d){
+            if(d.begin <= currentTime && d.end >= currentTime)
+                return 1;
+            return 0;
+        })
+}
+
+function playGD(width, height, currentTime){
+    // console.log('GD');
+    // console.log(SN);
+    // console.log(verse);
+    // console.log(chorus);
+    d3.select('#SN')
+        .attr('width', width)
+        .attr('height', height)
+        .selectAll('text')
+        .data(SN.concat(verse).concat(chorus))
+        .enter()
+        .append('text')
+        .text(function(d) {
+            return d.subtitle;
+        })
+        .attr('x', function(d) {
+            return d.x;
+        })
+        .attr('y', function(d) {
+            return d.y;
+        })
+        .attr('font-size', function(d) {
+            return d.fontSize;
+        })
+        .attr('transform',function(d){
+            if(!isEmpty(d.rotate)){
+                // console.log('rotate',d);
                 return 'rotate('+ d.rotate['degree'] +','+ $(this).attr('x') +','+ $(this).attr('y') +')';
             }
             return '';

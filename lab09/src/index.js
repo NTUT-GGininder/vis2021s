@@ -151,32 +151,58 @@ $(function(){
     read(SN, './src/Goodbye Declaration/SongName.srt');
     read(verse, './src/Goodbye Declaration/verse.srt');
     read(chorus,'./src/Goodbye Declaration/chorus.srt')
+    $('.custom-seekbar').css('width', function(){
+        console.log($(this).closest('.container').find('video').width())
+        return $(this).closest('.container').find('video').width();
+    });
     $("#video").on("play seeked", function(e){
+        this.controls = false;
         $(this).closest('.container').find('svg').empty();
         let height = $(this).closest(".container").find('.overlay').height() / 2;
         let width = $('#video').width();
         playGrandBlue(width, height, this.currentTime);
     });
-    $("#video, #video1").on("pause",function(e){
+    $("video").on("pause",function(e){
+        this.controls = true;
         console.log("pause");
         $(this).closest('.container').find('svg').empty();
     })
     $("#video1").on("play seeked", function(e){
+        this.controls = false;
         $(this).closest('.container').find('svg').empty();
         let height = $(this).closest(".container").find('.overlay').height() / 2;
         let width = $('#video1').width();
         playSincerely(width, height, this.currentTime);
     });
     $("#video2").on("play seeked", function(e){
+        this.controls = false;
         $(this).closest('.container').find('svg').empty();
         $(this).closest('.container').find('.overlayAll').css("display","");
         let height = $(this).height();
         let width = $(this).width();
         playGD(width, height, this.currentTime);
     });
-    $("#video2").on("pause", function(e){
-        // $(this).closest('.container').find('svg').empty();
-        // $(this).closest('.container').find('.overlayAll').css("display","none");
+
+    $('video').on('timeupdate',function(){
+        // console.log('update');
+        var percentage = ( this.currentTime / this.duration ) * 100;
+        // console.log($(this).closest('.container').find(".custom-seekbar span"));
+        $(this).closest('.container').find(".custom-seekbar span").css("width", percentage+"%");
+    });
+      
+    $(".custom-seekbar").on("click", function(e){
+        let vid = $(this).closest('.container').find('video')[0];
+        var offset = $(this).offset();
+        console.log(offset)
+        var left = (e.pageX - offset.left);
+        console.log(e.pageX)
+        var totalWidth = $(".custom-seekbar").width();
+        console.log(totalWidth)
+        var percentage = ( left / totalWidth );
+        var vidTime = vid.duration * percentage;
+        console.log(vid);
+        console.log(vid.currentTime);
+        vid.currentTime  = vidTime;
     });
 });
 

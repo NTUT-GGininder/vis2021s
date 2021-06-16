@@ -2,8 +2,8 @@ var SN=[];
 var verse=[];
 var chorus=[]
 
-var console = {};
-console.log = function(){};
+//var console = {};
+//console.log = function(){};
 
 var isEmpty = function(data) {
     if (typeof(data) === 'object') {

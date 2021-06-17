@@ -212,7 +212,10 @@ $(function(){
         $(this).closest('.container').find('svg').empty();
         let height = $(this).closest(".container").find('.overlay').height() / 2;
         let width = $('#video').width();
-        playGrandBlue(width, height, this.currentTime);
+        if(this.paused)
+            playPauseGrandBlue(width, height, this.currentTime);
+        else
+            playGrandBlue(width, height, this.currentTime);
     });
     $("video").on("pause",function(e){
         let height = $(this).closest(".container").find('.overlay').height() / 2 || $(this).height();
@@ -224,16 +227,20 @@ $(function(){
         else if($(this).prop('id') === 'video1'){
             playPauseSincerely(width, height, this.currentTime);
         }
-        else if($(this).prop('id') === 'video2')
-        console.log(height);
+        else if($(this).prop('id') === 'video2'){
             playPauseGD(width, height, this.currentTime);
+        }
+        
     })
     $("#video1").on("play seeked", function(e){
         // this.controls = false;
         $(this).closest('.container').find('svg').empty();
         let height = $(this).closest(".container").find('.overlay').height() / 2;
         let width = $('#video1').width();
-        playSincerely(width, height, this.currentTime);
+        if(this.paused)
+            playPauseSincerely(width, height, this.currentTime);
+        else
+            playSincerely(width, height, this.currentTime);
     });
     $("#video2").on("play seeked", function(e){
         // this.controls = false;
@@ -241,7 +248,10 @@ $(function(){
         $(this).closest('.container').find('.overlayAll').css("display","");
         let height = $(this).height();
         let width = $(this).width();
-        playGD(width, height, this.currentTime);
+        if(this.paused)
+            playPauseGD(width, height, this.currentTime);
+        else
+            playGD(width, height, this.currentTime);
     });
 });
 
